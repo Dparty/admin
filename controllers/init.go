@@ -14,7 +14,7 @@ func Init(addr ...string) {
 	router.Use(server.CorsMiddleware())
 	router.GET("/version", func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{
-			"version": "0.0.2",
+			"version": "0.0.1",
 		})
 	})
 	router.Run(addr...)

@@ -13,12 +13,12 @@ tags:
   - name: Account
   - name: Restaurant
 paths:
-  /account:
+  /me:
     get:
       tags:
         - Account
-      description: Get account detail
-      operationId: GetAccount
+      description: Get current account detail
+      operationId: GetMe
       responses:
         '200':
           description: Success get account detail
@@ -26,38 +26,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
-  /sessions:
-    post:
-      tags:
-        - Account
-      description: Create Login session
-      operationId: CreateSession
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateSessionRequest'
-      responses:
-        '201':
-          description: 'Account created'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Session'
-  /account/password:
-    put:
-      tags:
-        - Account
-      operationId: UpdatePassword
-      description: Update password
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePasswordRequest'
-      responses:
-        '204':
-          description: 'Updated'
   /accounts:
     post:
       tags:
@@ -92,6 +60,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountList'
+  /sessions:
+    post:
+      tags:
+        - Account
+      description: Create Login session
+      operationId: CreateSession
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+      responses:
+        '201':
+          description: 'Account created'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+  /account/password:
+    put:
+      tags:
+        - Account
+      operationId: UpdatePassword
+      description: Update password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePasswordRequest'
+      responses:
+        '204':
+          description: 'Updated'
+  
 components:
   schemas:
     SessionVerificationRequest:
@@ -134,7 +135,7 @@ components:
           $ref: '#/components/schemas/Role'
     Role:
       type: string
-      enum: [ROOT, ADMIN, USER, SUB_ACCOUNT]
+      enum: [ROOT, ADMIN]
     UpdatePasswordRequest:
       type: object
       required:
