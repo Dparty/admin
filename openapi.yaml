@@ -7,8 +7,8 @@ info:
     email: chenyunda218@gmail.com
   version: 0.0.2
 servers:
-  - url: https://auth.sum-foods.com
-  - url: https://auth-uat.sum-foods.com
+  - url: https://admin.sum-foods.com
+  - url: https://admin-uat.sum-foods.com
 tags:
   - name: Account
   - name: Restaurant
